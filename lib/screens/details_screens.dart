@@ -1,3 +1,4 @@
+import 'package:app_movies/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class DetailsScreen extends StatelessWidget {
@@ -13,7 +14,14 @@ class DetailsScreen extends StatelessWidget {
       slivers: [
         _CustomAppBar(),
         SliverList(delegate:SliverChildListDelegate([
-          _PosterAndTitle()
+          _PosterAndTitle(),
+          _Overview(),
+          _Overview(),
+          _Overview(),
+          _Overview(),
+          _Overview(),
+          _Overview(),
+          CastingCards()
         ]) )
       ],
     ));
@@ -21,10 +29,26 @@ class DetailsScreen extends StatelessWidget {
 }
 
 
+class _Overview extends StatelessWidget {
+  const _Overview({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding:EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+      child:Text(textAlign: TextAlign.justify,style:Theme.of(context).textTheme.subtitle1,
+        'Consequat excepteur nisi eu et veniam commodo reprehenderit voluptate. Eu Lorem enim velit dolore consequat qui commodo ipsum Lorem duis labore veniam dolore eu.')
+    );
+  }
+}
+
 class _PosterAndTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final TextTheme textTheme = Theme.of(context).textTheme;
+
     return Container(
 
       margin:EdgeInsets.only(top:20),
@@ -40,8 +64,8 @@ class _PosterAndTitle extends StatelessWidget {
 
           SizedBox(width:20),
           Column(children: [
-            Text('movie.title',style:Theme.of(context).textTheme.headline5,overflow: TextOverflow.ellipsis,maxLines: 2),
-            Text('movie.original.title',style:Theme.of(context).textTheme.headline5,overflow: TextOverflow.ellipsis,maxLines: 2),
+            Text('movie.title',style:textTheme.headline5,overflow: TextOverflow.ellipsis,maxLines: 2),
+            Text('movie.original.title',style:textTheme.headline5,overflow: TextOverflow.ellipsis,maxLines: 2),
           ])
 
 
@@ -53,6 +77,7 @@ class _PosterAndTitle extends StatelessWidget {
 }
 
 class _CustomAppBar extends StatelessWidget {
+
 
   @override
   Widget build(BuildContext context) {
