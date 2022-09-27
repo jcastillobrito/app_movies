@@ -1,9 +1,14 @@
+import 'package:app_movies/providers/movie_provider.dart';
 import 'package:app_movies/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+    final moviesProvider = Provider.of<MovieProvider>(context);
+
     return Scaffold(
         appBar: AppBar(
             actions: [
@@ -16,7 +21,7 @@ class HomeScreen extends StatelessWidget {
         body: SingleChildScrollView(
             child: Column(children: [
           //tarjetas principales
-          const CardSWiper(),
+           CardSWiper(movies :moviesProvider.onDisplayMovies),
           //Slider de peliculas
           MovieSlider(),
         ])));
