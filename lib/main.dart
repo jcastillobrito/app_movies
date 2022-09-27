@@ -1,18 +1,36 @@
 import 'package:flutter/material.dart';
 import 'screens/screens.dart';
 
-void main() => runApp(MyApp());
+import 'package:provider/provider.dart';
+import 'package:app_movies/providers/movie_provider.dart';
+
+void main() => runApp(AppState());
+
+class AppState extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => MovieProvider(), lazy: false),
+      ],
+      child: MyApp(),
+    );
+  }
+}
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Material App',
       debugShowCheckedModeBanner: false,
+      title: 'Películas',
       initialRoute: 'home',
-      routes: {'home': (_) => HomeScreen(), 'details': (_) => DetailsScreen()},
+      routes: {
+        'home': (_) => HomeScreen(),
+        'details': (_) => DetailsScreen(),
+      },
       theme: ThemeData.light()
-          .copyWith(appBarTheme: AppBarTheme(color: Colors.red[300])),
+          .copyWith(appBarTheme: AppBarTheme(color: Colors.indigo)),
     );
   }
 }
