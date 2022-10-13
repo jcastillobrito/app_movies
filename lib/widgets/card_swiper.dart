@@ -47,6 +47,7 @@ class CardSWiper extends StatelessWidget {
                       fit: BoxFit.cover),
                 ),
               );
+              
             }));
   }
 }
