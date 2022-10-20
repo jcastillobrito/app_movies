@@ -23,7 +23,8 @@ class HomeScreen extends StatelessWidget {
           //tarjetas principales
            CardSWiper(movies :moviesProvider.onDisplayMovies),
           //Slider de peliculas
-          MovieSlider(movies :moviesProvider.popularMovies,title:'Populares'),
+          MovieSlider(movies :moviesProvider.popularMovies,title:'Populares',onNextPage : ()=> moviesProvider.getPopularMovie()
+          ),
         ])));
   }
 }
